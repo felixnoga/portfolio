@@ -1,0 +1,234 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+}
+nav {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  margin-right:2rem;
+  #menu-bars {
+    display: none;
+  }
+  #close-menu {
+    display: none;
+    z-index: 20;
+    position: absolute;
+    top:-490px;
+    right:10px;
+    color: #424949;
+    cursor: pointer;
+    transition: transform 500ms;
+  }
+  .menu-items {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    li {
+      margin-left: 2rem;
+      a {
+        text-decoration: none;
+        color: #424949;
+      }
+      &.active {
+        border-bottom: 2px solid #16a085;
+      }
+
+    }
+  }
+}
+.header {
+  background: #F6F8FE;
+  height: 100vh;
+  background: url("../images/bg.png") no-repeat bottom left;
+  background-size: contain;
+  overflow: hidden;
+  #parallax1, #parallax2{
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    width: 100%;
+    z-index: -10;
+  }
+  #parallax3, #parallax4 {
+    z-index: -10;
+    position: absolute;
+    bottom: -70%;
+  }
+
+}
+.subheader {
+
+  position: relative;
+  overflow: hidden;
+  font-size: 1.3rem;
+    h1 {
+      text-align: center;
+      color: #424949;
+      font-size: 3rem;
+    }
+    h3 {
+      text-align: center;
+      color: #16a085;
+    }
+    hr {
+      width: 50%;
+      height: 5px;
+      background: #424949;
+    }
+
+}
+#bio {
+  padding: 10rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  text-align: justify;
+  flex-wrap: wrap;
+  line-height: 2rem;
+  background-color: #F2F1EF;
+  min-height: 100vh;
+  color: #2c3e50;
+    &>section {
+      width: 50%;
+    }
+  figure {
+    text-align: center;
+    position: relative;
+
+    img {
+      position: relative;
+      transition: transform 1s, opacity 2s;
+      border-radius: 50%;
+      opacity: 0;
+      right: -500px;
+      width: 300px;
+      height: 300px;
+    }
+    figcaption {
+      width: 300px;
+      height: 300px;
+      background-color: #9EA8BD;
+      border-radius: 50%;
+      position: absolute;
+      top:0;
+      left: calc(50% - 150px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s;
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+}
+#tecnologias {
+  min-height: 100vh;
+  background-color: #2c3e50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .tecnologia{
+    color: #9EA8BD;
+    box-sizing: border-box;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 25%;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 500ms, color 500ms;
+    img {
+      width: 120px;
+      height: 120px;
+    }
+    &:hover {
+      color: #e74c3c;
+      transform: scale(1.3);
+    }
+
+  }
+}
+@media screen and (max-width: 768px) {
+
+  .header {
+    background: url("../images/bg_mobile.png") no-repeat center center;
+    nav{
+      ul {
+        margin: 0;
+        position: absolute;
+        transition: transform 500ms;
+        top: -500px;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: rgba(236,240,241 ,.95);
+        z-index: 10;
+        li {
+          margin: 1rem 0;
+        }
+      }
+      #close-menu {
+        display: block;
+        z-index: 20;
+        position: absolute;
+        top: -490px;
+        right: 10px;
+        color: #424949;
+        cursor: pointer;
+        transition: transform 500ms;
+      }
+
+    }
+
+    #menu-bars {
+      display: block;
+      cursor: pointer;
+    }
+    .subheader {
+      background-size: auto 80%;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    img {
+      display: none;
+    }
+  }
+
+  #bio {
+    padding: 2rem;
+    &>section {
+      width: 100%;
+    }
+  }
+  #tecnologias {
+    div.tecnologia {
+      width: 50%;
+    }
+  }
+}
+
+//HELPER CLASES
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}
