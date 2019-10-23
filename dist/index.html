@@ -6,7 +6,7 @@
     <title>Félix Nogales</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://kit.fontawesome.com/e1c30c853e.js" crossorigin="anonymous"></script>
+<!--    <script src="https://kit.fontawesome.com/e1c30c853e.js" crossorigin="anonymous"></script>-->
 </head>
 <body>
 <main>
@@ -19,7 +19,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#bio">Bio</a></li>
                 <li><a href="#tecnologias">Tecnologías</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#contact-form">Contacto</a></li>
             </ul>
 
         </nav>
@@ -30,16 +30,19 @@
         </section>
         <img src="images/bg1.png" alt="fondo" id="parallax1">
         <img src="images/bg2.png" alt="fondo" id="parallax2">
+
 <!--        <img src="images/bg3.png" alt="fondo" id="parallax3">-->
 <!--        <img src="images/bg4.png" alt="fondo" id="parallax4">-->
 
     </header>
     <article id="bio">
         <section>
+            <h2>Un poco sobre mí</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facere?</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut dignissimos eius molestiae neque non quibusdam quos, sint vitae. A ad alias aliquam amet architecto aspernatur assumenda at autem blanditiis commodi corporis dolor doloremque eos error expedita fugiat harum in ipsam iste magnam minus, modi nobis non numquam optio pariatur provident quibusdam quisquam quos rem sint soluta tenetur veritatis. Accusantium, aliquam aliquid architecto assumenda at blanditiis consectetur culpa deleniti dolor ea excepturi, expedita facere fugiat fugit ipsa ipsam itaque iusto labore modi molestiae nam non optio pariatur perferendis praesentium quidem rem repellat reprehenderit, sed similique tenetur vel vero voluptas voluptate.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam at corporis dicta laudantium libero natus necessitatibus provident sit voluptas.</p>
         </section>
-        <section>
+        <section id="foto">
             <figure>
                 <img id="img-bio" src="images/felix.png" alt="Felix Nogales">
                 <figcaption>Hola! Soy Félix</figcaption>
@@ -47,6 +50,7 @@
         </section>
     </article>
     <article id="tecnologias">
+        <h1 class="teconologias__header">Tecnologías</h1>
         <div class="tecnologia"><i class="fab fa-html5 fa-6x"></i><p>HTML</p></div>
         <div class="tecnologia"><i class="fab fa-css3-alt fa-6x"></i><p>CSS</p></div>
         <div class="tecnologia"><i class="fab fa-sass fa-6x"></i><p>SASS</p></div>
@@ -55,6 +59,119 @@
         <div class="tecnologia"><i class="fab fa-react fa-6x"></i><p>React</p></div>
         <div class="tecnologia"><i class="fab fa-angular fa-6x"></i><p>Angular</p></div>
         <div class="tecnologia"><img src="images/webpack.png" alt="webpack"><p>Webpack</p></div>
+
+    </article>
+    <article id="contact-form">
+<!--        <div class="form-left">-->
+<!--            <h2>Contacta conmigo</h2>-->
+<!--        </div>-->
+        <form action="">
+            <div class="progress-bar-container">
+                <ul class="progress-bar">
+                    <li class="progress-item">
+                        <span class="fa-stack" :class="{'is-green': step>1, 'step-active': step===1}">
+                          <i class="far fa-circle fa-stack-2x"></i>
+                          <i class="far fa-user fa-stack-1x"></i>
+                        </span>
+                        <p>Paso 1</p>
+                    </li>
+                    <li class="progress-item">
+                        <span class="fa-stack" :class="{'is-green': step>2, 'step-active': step===2}">
+                          <i class="far fa-circle fa-stack-2x"></i>
+                          <i class="far fa-envelope fa-stack-1x"></i>
+                        </span>
+                        <p>Paso 2</p>
+                    </li>
+                    <li class="progress-item">
+                        <span class="fa-stack" :class="{'is-green': step>3, 'step-active': step===3}">
+                          <i class="far fa-circle fa-stack-2x"></i>
+                          <i class="fas fa-phone fa-stack-1x"></i>
+                        </span>
+                    <p>Paso 3</p>
+                    </li>
+                    <li class="progress-item">
+                        <span class="fa-stack" :class="{'is-green': step>4, 'step-active': step===4}">
+                          <i class="far fa-circle fa-stack-2x"></i>
+                          <i class="far fa-sticky-note fa-stack-1x"></i>
+                        </span>
+                        <p>Paso 4</p>
+                    </li>
+                    <li class="progress-item">
+                        <span class="fa-stack" :class="{'step-active': step===5}" >
+                          <i class="far fa-circle fa-stack-2x"></i>
+                          <i class="far fa-share-square fa-stack-1x"></i>
+                        </span>
+                        <p>Paso 5</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-container">
+                <h3 class="form-heading">Formulario de contacto</h3>
+                <transition name="form-fade" mode="out-in">
+                    <div v-if="step===1" key="step-1">
+                        <p>Nombre:</p>
+                        <input :class="{'has-error': !contacto.nombre.completed}" @input="checkCompleted" type="text"
+                               name="nombre" placeholder="Nombre, empresa..." v-model="contacto.nombre.nombre">
+                        <span class="error-message"
+                              v-show="contacto.nombre.error">Upps, tienes que introducir un nombre de al menos 3 caracteres</span>
+                        <div>
+                            <button v-if="contacto.nombre.completed" @click.prevent="nextStep">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div v-if="step===2" key="step-2">
+                        <p>E-mail de contacto:</p>
+                        <input :class="{'has-error': !contacto.email.completed}" @input="checkCompleted" type="email"
+                               name="email" placeholder="Email de contacto..." v-model="contacto.email.email">
+                        <span class="error-message"
+                              v-if="contacto.email.error">Debes introducir un email válido</span>
+                        <div>
+                            <button @click.prevent="prevStep">Anterior</button>
+                            <button v-if="contacto.email.completed" @click.prevent="nextStep">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div v-if="step===3" key="step-3">
+                        <p>Teléfono de contacto:</p>
+                        <input v-numeric-only :class="{'has-error': !contacto.telefono.completed}"
+                               @input="checkCompleted"
+                               type="text" name="telefono" placeholder="Teléfono de contacto..."
+                               v-model="contacto.telefono.telefono">
+                        <span class="error-message" v-if="contacto.telefono.error">Recuerda, sólo se permiten números!</span>
+                        <div>
+                            <button @click.prevent="prevStep">Anterior</button>
+                            <button v-if="contacto.telefono.completed" @click.prevent="nextStep">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div v-if="step===4" key="step-4">
+                        <p>Mensaje:</p>
+                        <textarea :class="{'has-error': !contacto.mensaje.completed}" @input="checkCompleted"
+                                  name="mensaje"
+                                  id="mensaje" cols="50" rows="10" placeholder="Tu mensaje o comentarios..."
+                                  v-model="contacto.mensaje.mensaje"></textarea>
+                        <div>
+                            <button @click.prevent="prevStep">Anterior</button>
+                            <button v-if="contacto.mensaje.completed" @click.prevent="nextStep">Finalizar</button>
+                        </div>
+                    </div>
+
+                    <div class="form-review" v-if="step===5" key="step-5">
+                        <h3>Revisar formulario y enviar</h3>
+                        <h4>Nombre</h4>
+                        <p>{{contacto.nombre.nombre}}</p>
+                        <h4>Email de contacto</h4>
+                        <p>{{contacto.email.email}}</p>
+                        <h4>Teléfono de contacto</h4>
+                        <p>{{contacto.telefono.telefono}}</p>
+                        <h4>Mensaje a enviar</h4>
+                        <p>{{contacto.mensaje.mensaje}}</p>
+                        <button @click.prevent="prevStep">Anterior</button>
+                        <button @click.prevent class="btn-enviar">Enviar</button>
+                    </div>
+                </transition>
+            </div>
+        </form>
 
     </article>
 </main>

@@ -3,7 +3,7 @@ let closeMenu = document.querySelector('#close-menu');
 let menu = document.querySelector('.menu-items');
 
 
-const showMenuOnMobile = () => {
+let showMenuOnMobile = () => {
     menuBars.style.display='none';
     menu.style.transform=`translateY(500px)`;
     closeMenu.style.transform = `translateY(500px)`;
@@ -22,4 +22,8 @@ const resetWindow = () => {
 
     }
 };
-export {showMenuOnMobile, closeMenuOnMobile, resetWindow};
+const validateEmail = email => {
+    let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/;
+    return regex.test(email);
+};
+export {showMenuOnMobile, closeMenuOnMobile, resetWindow, validateEmail};
